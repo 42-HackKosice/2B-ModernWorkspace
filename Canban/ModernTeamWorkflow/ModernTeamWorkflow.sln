@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernTeamWorkflow", "ModernTeamWorkflow.csproj", "{9CF2F04B-EF7A-4B0E-97CF-55269A94F286}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CF2F04B-EF7A-4B0E-97CF-55269A94F286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF2F04B-EF7A-4B0E-97CF-55269A94F286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF2F04B-EF7A-4B0E-97CF-55269A94F286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF2F04B-EF7A-4B0E-97CF-55269A94F286}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D23FA195-0F73-4893-A495-D48A36F14BA8}
+	EndGlobalSection
+EndGlobal
