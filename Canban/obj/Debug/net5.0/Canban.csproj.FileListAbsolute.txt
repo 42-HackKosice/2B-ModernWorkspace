@@ -167,3 +167,8 @@ C:\Users\matej\source\repos\2B-ModernWorkspace\Canban\obj\Debug\net5.0\Razor\Pag
 C:\Users\matej\source\repos\2B-ModernWorkspace\Canban\obj\Debug\net5.0\Razor\Pages\WorkGroups\Details.cshtml.g.cs
 C:\Users\matej\source\repos\2B-ModernWorkspace\Canban\obj\Debug\net5.0\Razor\Pages\WorkGroups\Edit.cshtml.g.cs
 C:\Users\matej\source\repos\2B-ModernWorkspace\Canban\obj\Debug\net5.0\Razor\Pages\WorkGroups\Index.cshtml.g.cs
+C:\Users\matej\source\repos\2B-ModernWorkspace\Canban\obj\Debug\net5.0\Razor\Pages\Buckets\Create.cshtml.g.cs
+C:\Users\matej\source\repos\2B-ModernWorkspace\Canban\obj\Debug\net5.0\Razor\Pages\Buckets\Delete.cshtml.g.cs
+C:\Users\matej\source\repos\2B-ModernWorkspace\Canban\obj\Debug\net5.0\Razor\Pages\Buckets\Details.cshtml.g.cs
+C:\Users\matej\source\repos\2B-ModernWorkspace\Canban\obj\Debug\net5.0\Razor\Pages\Buckets\Edit.cshtml.g.cs
+C:\Users\matej\source\repos\2B-ModernWorkspace\Canban\obj\Debug\net5.0\Razor\Pages\Buckets\Index.cshtml.g.cs
