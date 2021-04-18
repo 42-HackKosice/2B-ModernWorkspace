@@ -9,12 +9,19 @@ namespace Canban.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        public ApplicationDbContext()
+        {
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
-        public DbSet<Canban.Models.WorkTask> Task { get; set; }
+
         public DbSet<Canban.Models.WorkGroup> WorkGroup { get; set; }
-        public DbSet<Canban.Models.TypesOfBucket> TypesOfBucket { get; set; }
+
+        public DbSet<Canban.Models.Bucket> Bucket { get; set; }
+
+        public DbSet<Canban.Models.WorkTask> WorkTask { get; set; }
     }
 }

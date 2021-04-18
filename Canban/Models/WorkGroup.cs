@@ -11,5 +11,7 @@ namespace Canban.Models
         public string Name { get; set; }
 #nullable enable
         public string? description { get; set; }
+#nullable disable
+        public IEnumerable<Bucket> buckets { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace Canban.Pages.WorkTasks
 
         public IActionResult OnGet()
         {
-        ViewData["WorkGroupID"] = new SelectList(_context.Set<WorkGroup>(), "WorkGroupID", "WorkGroupID");
+        ViewData["BucketID"] = new SelectList(_context.Bucket, "TypeID", "TypeID");
             return Page();
         }
 
@@ -36,7 +36,7 @@ namespace Canban.Pages.WorkTasks
                 return Page();
             }
 
-            _context.Task.Add(WorkTask);
+            _context.WorkTask.Add(WorkTask);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

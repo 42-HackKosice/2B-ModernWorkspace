@@ -29,8 +29,8 @@ namespace Canban.Pages.WorkTasks
                 return NotFound();
             }
 
-            WorkTask = await _context.Task
-                .Include(w => w.workGroup).FirstOrDefaultAsync(m => m.TaskID == id);
+            WorkTask = await _context.WorkTask
+                .Include(w => w.bucket).FirstOrDefaultAsync(m => m.TaskID == id);
 
             if (WorkTask == null)
             {
@@ -46,11 +46,11 @@ namespace Canban.Pages.WorkTasks
                 return NotFound();
             }
 
-            WorkTask = await _context.Task.FindAsync(id);
+            WorkTask = await _context.WorkTask.FindAsync(id);
 
             if (WorkTask != null)
             {
-                _context.Task.Remove(WorkTask);
+                _context.WorkTask.Remove(WorkTask);
                 await _context.SaveChangesAsync();
             }
 

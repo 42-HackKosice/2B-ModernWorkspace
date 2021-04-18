@@ -20,7 +20,7 @@ namespace Canban.Pages.Buckets
         }
 
         [BindProperty]
-        public TypesOfBucket TypesOfBucket { get; set; }
+        public Bucket Bucket { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,10 +29,10 @@ namespace Canban.Pages.Buckets
                 return NotFound();
             }
 
-            TypesOfBucket = await _context.TypesOfBucket
-                .Include(t => t.workGroup).FirstOrDefaultAsync(m => m.TypeID == id);
+            Bucket = await _context.Bucket
+                .Include(b => b.workGroup).FirstOrDefaultAsync(m => m.TypeID == id);
 
-            if (TypesOfBucket == null)
+            if (Bucket == null)
             {
                 return NotFound();
             }
@@ -46,11 +46,11 @@ namespace Canban.Pages.Buckets
                 return NotFound();
             }
 
-            TypesOfBucket = await _context.TypesOfBucket.FindAsync(id);
+            Bucket = await _context.Bucket.FindAsync(id);
 
-            if (TypesOfBucket != null)
+            if (Bucket != null)
             {
-                _context.TypesOfBucket.Remove(TypesOfBucket);
+                _context.Bucket.Remove(Bucket);
                 await _context.SaveChangesAsync();
             }
 

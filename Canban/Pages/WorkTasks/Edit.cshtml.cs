@@ -30,14 +30,14 @@ namespace Canban.Pages.WorkTasks
                 return NotFound();
             }
 
-            WorkTask = await _context.Task
-                .Include(w => w.workGroup).FirstOrDefaultAsync(m => m.TaskID == id);
+            WorkTask = await _context.WorkTask
+                .Include(w => w.bucket).FirstOrDefaultAsync(m => m.TaskID == id);
 
             if (WorkTask == null)
             {
                 return NotFound();
             }
-           ViewData["WorkGroupID"] = new SelectList(_context.Set<WorkGroup>(), "WorkGroupID", "WorkGroupID");
+           ViewData["BucketID"] = new SelectList(_context.Bucket, "TypeID", "TypeID");
             return Page();
         }
 
@@ -73,7 +73,7 @@ namespace Canban.Pages.WorkTasks
 
         private bool WorkTaskExists(int id)
         {
-            return _context.Task.Any(e => e.TaskID == id);
+            return _context.WorkTask.Any(e => e.TaskID == id);
         }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Canban.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210417151019_Initial-Create")]
-    partial class InitialCreate
+    [Migration("20210417200506_GroupsCreate")]
+    partial class GroupsCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Canban.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Canban.Models.TypesOfBucket", b =>
+            modelBuilder.Entity("Canban.Models.Bucket", b =>
                 {
                     b.Property<int>("TypeID")
                         .ValueGeneratedOnAdd()
@@ -41,7 +41,7 @@ namespace Canban.Data.Migrations
 
                     b.HasIndex("workGroupID");
 
-                    b.ToTable("TypesOfBucket");
+                    b.ToTable("Bucket");
                 });
 
             modelBuilder.Entity("Canban.Models.WorkGroup", b =>
@@ -69,6 +69,9 @@ namespace Canban.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BucketID")
+                        .HasColumnType("int");
+
                     b.Property<string>("TaskDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -78,14 +81,11 @@ namespace Canban.Data.Migrations
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("WorkGroupID")
-                        .HasColumnType("int");
-
                     b.HasKey("TaskID");
 
-                    b.HasIndex("WorkGroupID");
+                    b.HasIndex("BucketID");
 
-                    b.ToTable("Task");
+                    b.ToTable("WorkTask");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -288,10 +288,10 @@ namespace Canban.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Canban.Models.TypesOfBucket", b =>
+            modelBuilder.Entity("Canban.Models.Bucket", b =>
                 {
                     b.HasOne("Canban.Models.WorkGroup", "workGroup")
-                        .WithMany()
+                        .WithMany("buckets")
                         .HasForeignKey("workGroupID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -301,13 +301,13 @@ namespace Canban.Data.Migrations
 
             modelBuilder.Entity("Canban.Models.WorkTask", b =>
                 {
-                    b.HasOne("Canban.Models.WorkGroup", "workGroup")
-                        .WithMany()
-                        .HasForeignKey("WorkGroupID")
+                    b.HasOne("Canban.Models.Bucket", "bucket")
+                        .WithMany("workTasks")
+                        .HasForeignKey("BucketID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("workGroup");
+                    b.Navigation("bucket");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -359,6 +359,16 @@ namespace Canban.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Canban.Models.Bucket", b =>
+                {
+                    b.Navigation("workTasks");
+                });
+
+            modelBuilder.Entity("Canban.Models.WorkGroup", b =>
+                {
+                    b.Navigation("buckets");
                 });
 #pragma warning restore 612, 618
         }

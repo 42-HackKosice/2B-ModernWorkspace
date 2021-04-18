@@ -20,6 +20,11 @@
                 <span asp-validation-for="WorkTask.TaskName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="WorkTask.until" class="control-label"></label>
+                <input asp-for="WorkTask.until" class="form-control" />
+                <span asp-validation-for="WorkTask.until" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="WorkTask.TaskDescription" class="control-label"></label>
                 <input asp-for="WorkTask.TaskDescription" class="form-control" />
                 <span asp-validation-for="WorkTask.TaskDescription" class="text-danger"></span>
@@ -30,9 +35,9 @@
                 <span asp-validation-for="WorkTask.UserID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WorkTask.WorkGroupID" class="control-label"></label>
-                <select asp-for="WorkTask.WorkGroupID" class="form-control" asp-items="ViewBag.WorkGroupID"></select>
-                <span asp-validation-for="WorkTask.WorkGroupID" class="text-danger"></span>
+                <label asp-for="WorkTask.BucketID" class="control-label"></label>
+                <select asp-for="WorkTask.BucketID" class="form-control" asp-items="ViewBag.BucketID"></select>
+                <span asp-validation-for="WorkTask.BucketID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

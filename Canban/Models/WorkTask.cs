@@ -12,10 +12,12 @@ namespace Canban.Models
         public int TaskID { get; set; }
         public string TaskName { get; set; }
 #nullable enable
+        public DateTime until { get; set; }
         public string? TaskDescription { get; set; }
         public string? UserID { get; set; }
 #nullable disable
-        public int WorkGroupID { get; set; }
-        public WorkGroup workGroup { get; set; }
+        public int BucketID { get; set; }
+        public Bucket bucket { get; set; }
+
     }
 }

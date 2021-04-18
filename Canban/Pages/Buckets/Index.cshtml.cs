@@ -19,12 +19,12 @@ namespace Canban.Pages.Buckets
             _context = context;
         }
 
-        public IList<TypesOfBucket> TypesOfBucket { get;set; }
+        public IList<Bucket> Bucket { get;set; }
 
         public async Task OnGetAsync()
         {
-            TypesOfBucket = await _context.TypesOfBucket
-                .Include(t => t.workGroup).ToListAsync();
+            Bucket = await _context.Bucket
+                .Include(b => b.workGroup).ToListAsync();
         }
     }
 }

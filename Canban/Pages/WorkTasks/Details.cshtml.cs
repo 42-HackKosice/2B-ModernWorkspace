@@ -28,8 +28,8 @@ namespace Canban.Pages.WorkTasks
                 return NotFound();
             }
 
-            WorkTask = await _context.Task
-                .Include(w => w.workGroup).FirstOrDefaultAsync(m => m.TaskID == id);
+            WorkTask = await _context.WorkTask
+                .Include(w => w.bucket).FirstOrDefaultAsync(m => m.TaskID == id);
 
             if (WorkTask == null)
             {

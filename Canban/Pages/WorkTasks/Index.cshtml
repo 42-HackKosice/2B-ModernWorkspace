@@ -17,13 +17,16 @@
                 @Html.DisplayNameFor(model => model.WorkTask[0].TaskName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.WorkTask[0].until)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.WorkTask[0].TaskDescription)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.WorkTask[0].UserID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WorkTask[0].workGroup)
+                @Html.DisplayNameFor(model => model.WorkTask[0].bucket)
             </th>
             <th></th>
         </tr>
@@ -35,13 +38,16 @@
                 @Html.DisplayFor(modelItem => item.TaskName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.until)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.TaskDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.workGroup.WorkGroupID)
+                @Html.DisplayFor(modelItem => item.bucket.TypeID)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.TaskID">Edit</a> |

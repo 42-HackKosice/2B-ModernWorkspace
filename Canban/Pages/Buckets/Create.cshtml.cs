@@ -21,12 +21,12 @@ namespace Canban.Pages.Buckets
 
         public IActionResult OnGet()
         {
-        ViewData["workGroupID"] = new SelectList(_context.WorkGroup, "WorkGroupID", "WorkGroupID");
+        ViewData["workGroupID"] = new SelectList(_context.WorkGroup, "WorkGroupID", "Name");
             return Page();
         }
 
         [BindProperty]
-        public TypesOfBucket TypesOfBucket { get; set; }
+        public Bucket Bucket { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -36,7 +36,7 @@ namespace Canban.Pages.Buckets
                 return Page();
             }
 
-            _context.TypesOfBucket.Add(TypesOfBucket);
+            _context.Bucket.Add(Bucket);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
