@@ -23,7 +23,7 @@ namespace Canban.Pages.WorkGroups
 
         public async Task OnGetAsync()
         {
-            WorkGroup = await _context.WorkGroup.ToListAsync();
+            WorkGroup = await _context.WorkGroup.Include(item => item.buckets).ThenInclude(item => item.workTasks).ToListAsync();
         }
     }
 }

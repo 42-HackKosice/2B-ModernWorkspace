@@ -8,9 +8,9 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Create New WorkGroup</a>
 </p>
-<table class="table">
+<table class="table d-none">
     <thead>
         <tr>
             <th>
@@ -40,3 +40,45 @@
 }
     </tbody>
 </table>
+
+@foreach (var item in Model.WorkGroup)
+{
+    <div class="container mb-3 rounded shadow-lg p-3" style="background-color:azure">
+        <div class="row">
+            <h3 class="col-sm-3">@item.Name</h3>
+            <a class="col-sm-4" asp-page="/Buckets/Create" asp-route-group="@item.Name">Create New Bucket</a>
+        </div>
+        
+        @if (item.description!=null) 
+        { 
+            <p>@item.description</p>
+        }
+        <div class="row mx-1">
+            @foreach (var bucket in item.buckets.OrderBy(item => item.Order)) 
+            {
+                <div class="col-sm rounded shadow p-3 bg-white">
+                    <div>
+                        <h4 class="">@bucket.Name</h4><br>
+                        <a class="" asp-page="/WorkTasks/Create" asp-route-bucketType="@bucket.TypeID" >Create New Task</a>
+                    </div>
+                    @foreach (var task in bucket.workTasks)
+                    {
+                        <div class="rounded shadow-sm p-3" style="background-color:azure">
+                            <h5>
+                                @task.TaskName
+                            </h5>
+                            <p>
+                                @task.until
+                            </p>
+                            <div class="row">
+                                <a asp-page="/WorkTasks/Edit" asp-route-id="@task.TaskID" class="col-sm">Edit</a>
+                                <a asp-page="/WorkTasks/Details" asp-route-id="@task.TaskID" class="col-sm">Details</a>
+                                <a asp-page="/WorkTasks/Delete" asp-route-id="@task.TaskID" class="col-sm">Delete</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}

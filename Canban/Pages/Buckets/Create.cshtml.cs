@@ -13,6 +13,8 @@ namespace Canban.Pages.Buckets
     public class CreateModel : PageModel
     {
         private readonly Canban.Data.ApplicationDbContext _context;
+        [BindProperty(SupportsGet = true)]
+        public string group { get; set; }
 
         public CreateModel(Canban.Data.ApplicationDbContext context)
         {
@@ -21,7 +23,20 @@ namespace Canban.Pages.Buckets
 
         public IActionResult OnGet()
         {
-        ViewData["workGroupID"] = new SelectList(_context.WorkGroup, "WorkGroupID", "Name");
+            var a = _context.WorkGroup
+                    .Where(item => item.Name == group)
+                    .First();
+
+            ViewData["workGroupID"] = new SelectList(_context.WorkGroup, "WorkGroupID", "Name", a.WorkGroupID);
+            /*
+            ViewData["workGroupID"] = new SelectList((from s in _context.WorkGroup 
+                                                      select new 
+                                                      {
+                                                          WorkGroupID = s.WorkGroupID,
+                                                          Name = s.Name,
+                                                          Value = @group
+                                                      }), "WorkGroupID", "Name", "Value");
+            */
             return Page();
         }
 
@@ -39,7 +54,7 @@ namespace Canban.Pages.Buckets
             _context.Bucket.Add(Bucket);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/WorkGroups/Index");
         }
     }
 }
