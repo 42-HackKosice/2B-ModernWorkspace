@@ -57,6 +57,7 @@
             @foreach (var bucket in item.buckets.OrderBy(item => item.Order)) 
             {
                 <div class="col-sm rounded shadow p-3 bg-white">
+                    
                     <div>
                         <h4 class="">@bucket.Name</h4><br>
                         <a class="" asp-page="/WorkTasks/Create" asp-route-bucketType="@bucket.TypeID" >Create New Task</a>
@@ -64,6 +65,16 @@
                     @foreach (var task in bucket.workTasks)
                     {
                         <div class="rounded shadow-sm p-3" style="background-color:azure">
+                            <div class="row p-3">
+                                @if (item.buckets.First().Name != bucket.Name)
+                                {
+                                    <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="left" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm">Left</a>
+                                }
+                                @if (item.buckets.Last().Name != bucket.Name)
+                                {
+                                    <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="right" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm">Right</a>
+                                }
+                                </div>
                             <h5>
                                 @task.TaskName
                             </h5>
