@@ -30,7 +30,7 @@ namespace Canban.Pages.WorkTasks
                    .First();
 
             ViewData["BucketID"] =
-                new SelectList((from s in _context.Bucket.Include(bucket => bucket.workGroup).ToList()
+                new SelectList((from s in _context.Bucket.Include(bucket => bucket.workGroup).OrderBy(bucket => bucket.workGroup.Name).ToList()
                                select new
                                {
                                    TypeID = s.TypeID,
