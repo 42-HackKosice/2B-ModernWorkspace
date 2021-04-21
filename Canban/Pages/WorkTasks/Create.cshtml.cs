@@ -37,7 +37,7 @@ namespace Canban.Pages.WorkTasks
                                    content = s.workGroup.Name + ", " + s.Name
                                }),"TypeID","content",a.TypeID) ;
 
-            ViewData["UserList"] = new SelectList(_context.Users);
+            ViewData["UserList"] = new SelectList(_context.Users, "Id", "UserName");
             return Page();
         }
 

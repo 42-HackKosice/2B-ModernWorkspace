@@ -1,15 +1,23 @@
 ﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @model Canban.Pages.WorkGroups.IndexModel
 
 @{
     ViewData["Title"] = "Index";
+    String SuperUser = "dcf5bab7-5fbf-493d-9f54-6afb23a4ba60";
+    var logged = User.Identity.IsAuthenticated;
 }
 
 <h1>Index</h1>
+@if (UserManager.GetUserId(User).Equals(SuperUser))
+{
+    <p>
+        <a asp-page="Create"><i class="far fa-plus-square"></i> New WorkGroup</a>
+    </p>
+}
 
-<p>
-    <a asp-page="Create">Create New WorkGroup</a>
-</p>
 <table class="table d-none">
     <thead>
         <tr>
@@ -23,73 +31,93 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.WorkGroup) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.WorkGroupID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.WorkGroupID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.WorkGroupID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.WorkGroup)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.WorkGroupID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.WorkGroupID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.WorkGroupID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 @foreach (var item in Model.WorkGroup)
 {
+    var Employ = from empl in item.employees
+                     where empl.UserID.Equals(UserManager.GetUserId(User))
+                     select empl;
+    if (Employ.Count() != 0 || !User.Identity.IsAuthenticated)
+    {
     <div class="container mb-3 rounded shadow-lg pl-3 pt-3 pb-3 pr-0" style="background-color:azure">
         <div class="row">
             <h3 class="col-sm-3">@item.Name</h3>
-            <a class="col-sm-4" asp-page="/Buckets/Create" asp-route-group="@item.Name">Create New Bucket</a>
+            @if (UserManager.GetUserId(User).Equals(SuperUser))
+            {
+                <a class="col-sm-4" asp-page="/Buckets/Create" asp-route-group="@item.Name"><i class="far fa-plus-square"></i> New Bucket</a>
+            }
         </div>
-        
-        @if (item.description!=null) 
-        { 
+
+        @if (item.description != null)
+        {
             <p>@item.description</p>
         }
         <div class="row mx-1">
-            @foreach (var bucket in item.buckets.OrderBy(item => item.Order)) 
+            @foreach (var bucket in item.buckets.OrderBy(item => item.Order))
             {
                 <div class="col-sm rounded shadow p-3 bg-white mr-3">
-                    
+
                     <div>
                         <h4 class="">@bucket.Name</h4><br>
-                        <a class="" asp-page="/WorkTasks/Create" asp-route-bucketType="@bucket.TypeID" >Create New Task</a>
+                        @if (UserManager.GetUserId(User).Equals(SuperUser))
+                        {
+                            <a class="" asp-page="/WorkTasks/Create" asp-route-bucketType="@bucket.TypeID"><i class="far fa-plus-square"></i> New Task</a>
+                        }
                     </div>
+
                     @foreach (var task in bucket.workTasks)
                     {
-                        <div class="rounded shadow-sm p-3" style="background-color:azure">
-                            <div class="row">
-                                @if (item.buckets.First().Name != bucket.Name)
-                                {
-                                    <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="left" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm text-center"><i class="fas fa-angle-double-left"></i></a>
-                                }
-                                @if (item.buckets.Last().Name != bucket.Name)
-                                {
-                                    <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="right" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm text-center"><i class="fas fa-angle-double-right"></i></a>
-                                }
+                        @if((task.UserID == UserManager.GetUserId(User)))
+                        {
+                            <div class="rounded shadow-sm p-3" style="background-color:azure">
+                                <div class="row">
+                                    @if (item.buckets.First().Name != bucket.Name)
+                                    {
+                                        <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="left" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm text-center"><i class="fas fa-angle-double-left"></i></a>
+                                    }
+                                    @if (item.buckets.Last().Name != bucket.Name)
+                                    {
+                                        <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="right" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm text-center"><i class="fas fa-angle-double-right"></i></a>
+                                    }
                                 </div>
-                            <h5>
-                                @task.TaskName
-                            </h5>
-                            <p>
-                                @task.until
-                            </p>
-                            <div class="row">
-                                <a asp-page="/WorkTasks/Edit" asp-route-id="@task.TaskID" class="col-sm text-right pr-0"><i class="far fa-edit"></i></a>
-                                <a asp-page="/WorkTasks/Details" asp-route-id="@task.TaskID" class="col-sm text-center p-0"><i class="fas fa-info-circle"></i></a>
-                                <a asp-page="/WorkTasks/Delete" asp-route-id="@task.TaskID" class="col-sm text-left pl-0"><i class="far fa-trash-alt"></i></a>
+                                <div class="row">
+                                    <h5 class="col-sm">
+                                        @task.TaskName
+                                    </h5>
+                                    <p class="col-sm">
+                                        @task.until.Date.ToShortDateString()
+                                    </p>
+                                </div>
+
+                                <div class="row">
+                                    <a asp-page="/WorkTasks/Edit" asp-route-id="@task.TaskID" class="col-sm text-right pr-0"><i class="far fa-edit"></i></a>
+                                    <a asp-page="/WorkTasks/Details" asp-route-id="@task.TaskID" class="col-sm text-center p-0"><i class="fas fa-info-circle"></i></a>
+                                    <a asp-page="/WorkTasks/Delete" asp-route-id="@task.TaskID" class="col-sm text-left pl-0"><i class="far fa-trash-alt"></i></a>
+                                </div>
                             </div>
-                        </div>
+                        }
                     }
                 </div>
             }
         </div>
     </div>
+    }
 }

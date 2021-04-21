@@ -43,8 +43,8 @@ namespace Canban.Pages.WorkTasks
                                 {
                                     TypeID = s.TypeID,
                                     content = s.workGroup.Name + ", " + s.Name
-                                }), "TypeID", "content");
-            ViewData["UserList"] = new SelectList(_context.Users);
+                                }), "TypeID", "content").OrderBy(x=>x.Group);
+            ViewData["UserList"] = new SelectList(_context.Users,"Id","UserName");
             return Page();
         }
 

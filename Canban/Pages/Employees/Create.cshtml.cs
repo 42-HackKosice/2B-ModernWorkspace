@@ -21,7 +21,8 @@ namespace Canban.Pages.Employees
 
         public IActionResult OnGet()
         {
-        ViewData["workGroupID"] = new SelectList(_context.WorkGroup, "WorkGroupID", "WorkGroupID");
+            ViewData["workGroupID"] = new SelectList(_context.WorkGroup, "WorkGroupID", "Name");
+            ViewData["UserList"] = new SelectList(_context.Users,"Id","UserName");
             return Page();
         }
 

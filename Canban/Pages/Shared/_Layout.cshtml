@@ -27,19 +27,24 @@
                         </li>
 
                         @if (SignInManager.IsSignedIn(User))
-                        {   
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/WorkGroups/Index">Work Groups |</a>
                             </li>
+
                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Employees/Index">Employees</a>
+                            </li>
+
+                            <li class="nav-item d-none">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Buckets/Index">Buckets</a>
                             </li>
-                            
-                            <li class="nav-item">
+
+                            <li class="nav-item d-none">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/WorkTasks/Index">Work Tasks</a>
                             </li>
                         }
-                        <li class="nav-item">
+                        <li class="nav-item d-none">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>

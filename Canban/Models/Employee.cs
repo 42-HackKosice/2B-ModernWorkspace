@@ -9,7 +9,8 @@ namespace Canban.Models
     public class Employee
     {
         public int EmployeeID { get; set; }
-        public int UserID { get; set; }
+        public string UserID { get; set; }
+        
         public int workGroupID { get; set; }
         public WorkGroup workGroup { get; set; }
 
