@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Canban.Data;
 using Canban.Models;
 
-namespace Canban.Pages.WorkTasks
+namespace Canban.Pages.Employees
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace Canban.Pages.WorkTasks
         }
 
         [BindProperty]
-        public WorkTask WorkTask { get; set; }
+        public Employee Employee { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,21 +30,14 @@ namespace Canban.Pages.WorkTasks
                 return NotFound();
             }
 
-            WorkTask = await _context.WorkTask
-                .Include(w => w.bucket).FirstOrDefaultAsync(m => m.TaskID == id);
+            Employee = await _context.Employee
+                .Include(e => e.workGroup).FirstOrDefaultAsync(m => m.EmployeeID == id);
 
-            if (WorkTask == null)
+            if (Employee == null)
             {
                 return NotFound();
             }
-            ViewData["BucketID"] =
-                new SelectList((from s in _context.Bucket.Include(bucket => bucket.workGroup).ToList()
-                                select new
-                                {
-                                    TypeID = s.TypeID,
-                                    content = s.workGroup.Name + ", " + s.Name
-                                }), "TypeID", "content");
-            ViewData["UserList"] = new SelectList(_context.Users);
+           ViewData["workGroupID"] = new SelectList(_context.WorkGroup, "WorkGroupID", "WorkGroupID");
             return Page();
         }
 
@@ -57,7 +50,7 @@ namespace Canban.Pages.WorkTasks
                 return Page();
             }
 
-            _context.Attach(WorkTask).State = EntityState.Modified;
+            _context.Attach(Employee).State = EntityState.Modified;
 
             try
             {
@@ -65,7 +58,7 @@ namespace Canban.Pages.WorkTasks
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!WorkTaskExists(WorkTask.TaskID))
+                if (!EmployeeExists(Employee.EmployeeID))
                 {
                     return NotFound();
                 }
@@ -75,12 +68,12 @@ namespace Canban.Pages.WorkTasks
                 }
             }
 
-            return RedirectToPage("/WorkGroups/Index");
+            return RedirectToPage("./Index");
         }
 
-        private bool WorkTaskExists(int id)
+        private bool EmployeeExists(int id)
         {
-            return _context.WorkTask.Any(e => e.TaskID == id);
+            return _context.Employee.Any(e => e.EmployeeID == id);
         }
     }
 }

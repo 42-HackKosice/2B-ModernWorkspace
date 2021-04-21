@@ -69,7 +69,6 @@ namespace Canban.Pages.WorkTasks
                     }
                 }
             }
-
             await _context.SaveChangesAsync();
             return RedirectToPage("/WorkGroups/Index");
         }

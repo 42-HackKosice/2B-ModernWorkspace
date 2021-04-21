@@ -15,7 +15,9 @@ namespace Canban.Models
         public DateTime until { get; set; }
         public string? TaskDescription { get; set; }
         public string? UserID { get; set; }
+        public decimal Price { get; set; }
 #nullable disable
+        public bool NeedHelp { get; set; }
         public int BucketID { get; set; }
         public Bucket bucket { get; set; }
 

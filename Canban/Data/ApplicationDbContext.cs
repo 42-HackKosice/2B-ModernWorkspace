@@ -23,5 +23,7 @@ namespace Canban.Data
         public DbSet<Canban.Models.Bucket> Bucket { get; set; }
 
         public DbSet<Canban.Models.WorkTask> WorkTask { get; set; }
+
+        public DbSet<Canban.Models.Employee> Employee { get; set; }
     }
 }
