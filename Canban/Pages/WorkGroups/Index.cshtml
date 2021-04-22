@@ -12,6 +12,21 @@
 }
 
 <h1>Index</h1>
+<div class="row p-3">
+    <div class="row col-sm mr-3">
+        <div class="col-sm rounded" style="background:repeating-linear-gradient(60deg,#fff,#fff 20px,#e0eeee 20px,#e0eeee 40px)"></div>
+        <p class="mb-0 ml-3">Not assigned task</p>
+    </div>
+    <div class="row col-sm mr-3">
+        <div class="col-sm rounded" style="background: repeating-linear-gradient(60deg,#fff,#fff 20px,#FFAFAF 20px,#FFAFAF 40px)"></div>
+        <p class="mb-0 ml-3">Near time to submit</p>
+    </div>
+    <div class="row col-sm">
+        <div class="col-sm rounded" style="background: repeating-linear-gradient(60deg,#fff,#fff 20px,#ffd180 20px,#ffd180 40px)"></div>
+        <p class="mb-0 ml-3">Need help</p>
+    </div>
+</div>
+
 @if (UserManager.GetUserId(User).Equals(SuperUser))
 {
     <p>
@@ -93,23 +108,49 @@
 
                     @foreach (var task in bucket.workTasks)
                     {
-                        @if ((task.UserID == UserManager.GetUserId(User)) || task.UserID == null)
+                        @if ((task.UserID == UserManager.GetUserId(User)) || task.UserID == null || SuperUser == UserManager.GetUserId(User) || task.NeedHelp)
                         {
                             <p class="d-none">
-                                @(bkg = task.UserID == null ? "4px" : "0px")
+                                @if (task.UserID == null)
+                                {
+                                    if (task.until.Subtract(DateTime.Now).Days < 5)
+                                    {
+                                        bkg = "repeating-linear-gradient(60deg,#e0eeee,#e0eeee 20px,#FFAFAF 20px,#FFAFAF 40px)";
+                                    }
+                                    else
+                                        bkg = "repeating-linear-gradient(60deg,#fff,#fff 20px,#e0eeee 20px,#e0eeee 40px)";
+                                }else if (task.NeedHelp)
+                                {
+                                    if (task.until.Subtract(DateTime.Now).Days < 5)
+                                    {
+                                        bkg = "repeating-linear-gradient(60deg,#ffd180,#ffd180 20px,#FFAFAF 20px,#FFAFAF 40px)";
+                                    }
+                                    else
+                                        bkg = "repeating-linear-gradient(60deg,#fff,#fff 20px,#ffd180 20px,#ffd180 40px)";
+                                }
+                                else if (task.until.Subtract(DateTime.Now).Days < 5)
+                                {
+                                    bkg = "repeating-linear-gradient(60deg,#fff,#fff 20px,#FFAFAF 20px,#FFAFAF 40px)";
+                                }
+                                else
+                                    bkg = "white";
+                                @if (task.bucket.Name.Contains("Complete"))
+                                {
+                                    bkg = "white";
+                                }
                             </p>
                             
 
 
 
-                            <div class="rounded shadow-sm p-3 mb-3" style="background-color:azure;border:@bkg dashed black">
+                            <div class="rounded shadow p-3 mb-3" style="background:@bkg">
                             
                                 <div class="row">
-                                    @if (item.buckets.First().Name != bucket.Name)
+                                    @if (item.buckets.First().Name != bucket.Name && UserManager.GetUserId(User).Equals(task.UserID) && !UserManager.GetUserId(User).Equals(SuperUser))
                                     {
                                         <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="left" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm text-center"><i class="fas fa-angle-double-left"></i></a>
                                     }
-                                    @if (item.buckets.Last().Name != bucket.Name)
+                                    @if (item.buckets.Last().Name != bucket.Name && UserManager.GetUserId(User).Equals(task.UserID) && !UserManager.GetUserId(User).Equals(SuperUser))
                                     {
                                         <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="right" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm text-center"><i class="fas fa-angle-double-right"></i></a>
                                     }
@@ -131,8 +172,9 @@
                                             @(task.Price+" €")
                                     </p>
                                 </div>
+                                
 
-                                <div class="row">
+                                <div class="row mb-2">
                                     @if (UserManager.GetUserId(User).Equals(SuperUser))
                                     {
                                         <a asp-page="/WorkTasks/Edit" asp-route-id="@task.TaskID" class="col-sm text-right pr-0"><i class="far fa-edit btn btn-outline-secondary"></i></a>
@@ -142,6 +184,17 @@
                                     {
                                         <a asp-page="/WorkTasks/Delete" asp-route-id="@task.TaskID" class="col-sm text-left pl-0"><i class="far fa-trash-alt btn btn-outline-danger"></i></a>
                                     }
+                                </div>
+                                <div class="row mr-2 ml-2">
+                                    @if (task.UserID != null && UserManager.GetUserId(User).Equals(task.UserID) && !task.bucket.Name.Contains("Complete"))
+                                    {
+                                        <a asp-page="/WorkTasks/NeedHelp" asp-route-id="@task.TaskID" class="col-sm btn btn-outline-secondary"> I need help </a>
+                                    }
+                                    @if (task.UserID == null)
+                                    {
+                                        <a asp-page="/WorkTasks/AssignTask" asp-route-id="@task.TaskID" class="col-sm btn btn-outline-secondary"> Take this task</a>
+                                    }
+                                    
                                 </div>
                             </div>
                         }
