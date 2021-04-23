@@ -72,6 +72,6 @@ The task on the side of another user looks like this:
 
 ### We tried to make the layout as intuitive as possible to make it more user friendly.  
 
-### Why this better than another?
+### Why is this better than another?
 
 Because we tried to create it as a part of the bigger thing. That you could login on all sites with one login to our ecosystem.
