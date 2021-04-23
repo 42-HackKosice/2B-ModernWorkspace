@@ -25,7 +25,7 @@ Calendar shows you who works at office that day.
  of the people at the same day cannot be more than 5, because of covid restrictions.
 ### Superuser
 * You can assign a working day to users or choose a day when everyone must be present.
-You can also see all of the users and number of days that they pick for themselves.
+* You can also see all of the users and number of days that they pick for themselves.
 
 
 ## Presentation of Protoype
