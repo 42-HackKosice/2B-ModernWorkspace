@@ -17,8 +17,16 @@
 
 ## Description
 
-Our project about meal ordering for example for Sudolabs, shows at the home page who order from where and when.  
-After logging in you can see your profile in which are data like what are you ordering today, and your order history. If you are today orderer, you can see the list of orders from all people so you can see what they want.
+Our project is solution for companies that works at Hybrid office system.
+Calendar shows you who works at office that day.  
+### User
+* You can choose the day, when you want to work in the office and see who will be working with you.
+* You cannot choose to be in the office for more than 15 days, but also maximum 
+ of the people at the same day cannot be more than 5, because of covid restrictions.
+### Superuser
+* You can assign a working day to users or choose a day when everyone must be present.
+You can also see all of the users and number of days that they pick for themselves.
+
 
 ## Presentation of Protoype
 
@@ -27,13 +35,13 @@ Presentation and features of prototype are shown in this video(image/link):
 
 ## How to try
 
-[Link for website: https://ordermeal.azurewebsites.net/](https://ordermeal.azurewebsites.net/)
+[Link for website: http://aworkcalendar.azurewebsites.net/](http://aworkcalendar.azurewebsites.net)
 
 You can register as new user of the system.  
-Or you can use the preset account from us:
+Or you can use the superuser account from us:
 ```
-Mail: test@profile.me
-Password: zgt39nqcDzsw:gS
+Mail: matejmazur@outlook.com
+Password: Passw0rd.+
 ```
 
 ![](https://mazur.blob.core.windows.net/obrazky/Screenshot%202021-04-09%20160304.png?sp=rl&st=2021-04-09T13:50:44Z&se=2092-12-10T13:50:00Z&sv=2020-02-10&sr=b&sig=UX5GOhtkkZIMzvjg55C4rEVm1FPFm4Af51mzRNcxm%2FY%3D)  
@@ -41,18 +49,17 @@ Password: zgt39nqcDzsw:gS
 
 ## Challenges and accomplishments
 
-Biggest challenge for us was to automate the tasks for the working people so they just need to choose what they want and than one person need to order it. And the things like who is ordering and when you are ordering next food are automatized. 
+The Biggest challenge for us was to implement calendar and connect it with a backend.
 
-Our team is proud on ourselves because this is for 2/3 of team members first hackathon. And also we used first time Git, GitHub and Laravel in one project.
+Our team is proud on ourselves because this was our first experience with implementing complex calendar to website.
 
 
 ## Next steps
 
-* [ ] Fill the web with real Data (Users, Restaurants)  
 >#### Possible Upgrades:
->* [ ] Automatic near restaurants
->* [ ] Reviews of the restaurants and ordered meals
+>* [ ] Time picker for users e.g. how many hours they will work in the office 
+
 
 ## License
 
-[MIT License](https://github.com/42-HackKosice/1B-OrderMealApp/blob/main/LICENSE)
+[MIT License](https://github.com/42-HackKosice/2B-ModernWorkspace/blob/main/LICENSE)
