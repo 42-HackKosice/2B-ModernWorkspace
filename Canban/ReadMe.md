@@ -1,4 +1,4 @@
-# Canban Board
+# Modern Workspace: Canban Board
 
 One of three parts of our vision of Hybrid Workspace is a Canban.
 You can access it at: [https://canban.azurewebsites.net/](https://canban.azurewebsites.net/)
