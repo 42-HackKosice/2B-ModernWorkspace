@@ -22,8 +22,9 @@ namespace Canban.Areas.Identity.Pages.Account
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return LocalRedirect("/WorkGroups/Index");
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
