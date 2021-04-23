@@ -1,7 +1,7 @@
 ![Obrázok1](https://user-images.githubusercontent.com/41269745/115898763-3485d800-a45e-11eb-88aa-5d5521ec765b.png)
 
 
-# Hack Kosice Marathon: OrderMealApp
+# Hack Kosice Marathon: Calendar
 
 *A template for projects submitted to HK Marathon 2021. You can [fork this repository](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) and use it as a starting point.*
 
