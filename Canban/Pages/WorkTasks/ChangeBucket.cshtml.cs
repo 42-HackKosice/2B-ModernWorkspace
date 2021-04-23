@@ -69,8 +69,11 @@ namespace Canban.Pages.WorkTasks
                     }
                 }
             }
+            await _context.SaveChangesAsync();
+            WorkTask = await _context.WorkTask
+                .Include(w => w.bucket).FirstOrDefaultAsync(m => m.TaskID == id);
             if (WorkTask.bucket.Name.Contains("Complete"))
-                WorkTask.NeedHelp = false;
+                    WorkTask.NeedHelp = false;
             await _context.SaveChangesAsync();
             return RedirectToPage("/WorkGroups/Index");
         }

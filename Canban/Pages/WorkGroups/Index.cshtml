@@ -78,7 +78,7 @@
 
                         @foreach (var task in bucket.workTasks)
                         {
-                            @if ((task.UserID == UserManager.GetUserId(User)) || task.UserID == null || SuperUser == UserManager.GetUserId(User) || task.NeedHelp)
+                            @if ((task.UserID == UserManager.GetUserId(User)) || (task.UserID == null) || (SuperUser == UserManager.GetUserId(User)) || (task.NeedHelp))
                             {
                                 <p class="d-none">
                                     @if (task.UserID == null)
@@ -116,11 +116,11 @@
                                 <div class="rounded shadow p-3 mb-3" style="background:@bkg">
                             
                                     <div class="row">
-                                        @if (item.buckets.First().Name != bucket.Name && UserManager.GetUserId(User).Equals(task.UserID) && !UserManager.GetUserId(User).Equals(SuperUser))
+                                        @if (item.buckets.OrderBy(x => x.Order).First().Name != bucket.Name && UserManager.GetUserId(User).Equals(task.UserID) && !UserManager.GetUserId(User).Equals(SuperUser))
                                         {
                                             <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="left" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm text-center"><i class="fas fa-angle-double-left"></i></a>
                                         }
-                                        @if (item.buckets.Last().Name != bucket.Name && UserManager.GetUserId(User).Equals(task.UserID) && !UserManager.GetUserId(User).Equals(SuperUser))
+                                        @if (item.buckets.OrderBy(x => x.Order).Last().Name != bucket.Name && UserManager.GetUserId(User).Equals(task.UserID) && !UserManager.GetUserId(User).Equals(SuperUser))
                                         {
                                             <a asp-page="/WorkTasks/ChangeBucket" asp-route-change="right" asp-route-id="@task.TaskID" asp-route-group="@item.Name" class="col-sm text-center"><i class="fas fa-angle-double-right"></i></a>
                                         }
