@@ -55,7 +55,7 @@ namespace Canban.Pages.WorkTasks
             _context.WorkTask.Add(WorkTask);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/WorkGroups/Index");
         }
     }
 }

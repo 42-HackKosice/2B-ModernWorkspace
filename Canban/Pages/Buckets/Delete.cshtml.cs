@@ -54,7 +54,7 @@ namespace Canban.Pages.Buckets
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/WorkGroups/Index");
         }
     }
 }

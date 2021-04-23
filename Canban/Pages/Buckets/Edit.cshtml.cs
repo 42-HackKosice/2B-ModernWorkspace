@@ -68,7 +68,7 @@ namespace Canban.Pages.Buckets
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/WorkGroups/Index");
         }
 
         private bool BucketExists(int id)
