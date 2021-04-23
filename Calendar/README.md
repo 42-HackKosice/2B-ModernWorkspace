@@ -9,56 +9,58 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Hack Kosice Marathon: OrderMealApp
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+*A template for projects submitted to HK Marathon 2021. You can [fork this repository](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) and use it as a starting point.*
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Team
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+42
 
-## Learning Laravel
+### Team members
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Breznický Timotej, SPŠE-PO
+- Mazúr Matej, SPŠE-PO
+- Poľanský Marko, SPŠE-PO
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Description
 
-## Laravel Sponsors
+Our project about meal ordering for example for Sudolabs, shows at the home page who order from where and when.  
+After logging in you can see your profile in which are data like what are you ordering today, and your order history. If you are today orderer, you can see the list of orders from all people so you can see what they want.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Presentation of Protoype
 
-### Premium Partners
+Presentation and features of prototype are shown in this video(image/link):
+[![Obrázok1](https://user-images.githubusercontent.com/41269745/114224997-199d6900-9972-11eb-81e4-a4f3dd65ea29.png)](https://youtu.be/064sRkHrSnY)  
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+## How to try
 
-## Contributing
+[Link for website: https://ordermeal.azurewebsites.net/](https://ordermeal.azurewebsites.net/)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+You can register as new user of the system.  
+Or you can use the preset account from us:
+```
+Mail: test@profile.me
+Password: zgt39nqcDzsw:gS
+```
 
-## Code of Conduct
+![](https://mazur.blob.core.windows.net/obrazky/Screenshot%202021-04-09%20160304.png?sp=rl&st=2021-04-09T13:50:44Z&se=2092-12-10T13:50:00Z&sv=2020-02-10&sr=b&sig=UX5GOhtkkZIMzvjg55C4rEVm1FPFm4Af51mzRNcxm%2FY%3D)  
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Challenges and accomplishments
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Biggest challenge for us was to automate the tasks for the working people so they just need to choose what they want and than one person need to order it. And the things like who is ordering and when you are ordering next food are automatized. 
+
+Our team is proud on ourselves because this is for 2/3 of team members first hackathon. And also we used first time Git, GitHub and Laravel in one project.
+
+
+## Next steps
+
+* [ ] Fill the web with real Data (Users, Restaurants)  
+>#### Possible Upgrades:
+>* [ ] Automatic near restaurants
+>* [ ] Reviews of the restaurants and ordered meals
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[MIT License](https://github.com/42-HackKosice/1B-OrderMealApp/blob/main/LICENSE)
