@@ -7,9 +7,11 @@
 
 ### Team members
 
-- Breznický Timotej, SPŠE-PO, Slovakia
-- Mazúr Matej, SPŠE-PO, Slovakia
-- Poľanský Marko, SPŠE-PO, Slovakia
+- Breznický Timotej, SPŠE-PO, 3rd grade
+- Mazúr Matej, SPŠE-PO, 3rd grade
+- Poľanský Marko, SPŠE-PO, 3rd grade
+
+[SPŠE-PO](spse-po.sk) = High school of electrical engineering in Prešov, Slovakia
 
 ## Description
 
