@@ -11,7 +11,7 @@
 - Mazúr Matej, SPŠE-PO, 3rd grade
 - Poľanský Marko, SPŠE-PO, 3rd grade
 
-[SPŠE-PO](spse-po.sk) = High school of electrical engineering in Prešov, Slovakia
+[SPŠE-PO](http://spse-po.sk) = High school of electrical engineering in Prešov, Slovakia
 
 ## Description
 
