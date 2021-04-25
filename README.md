@@ -7,9 +7,9 @@
 
 ### Team members
 
-- Breznický Timotej, SPŠE-PO
-- Mazúr Matej, SPŠE-PO
-- Poľanský Marko, SPŠE-PO
+- Breznický Timotej, SPŠE-PO, Slovakia
+- Mazúr Matej, SPŠE-PO, Slovakia
+- Poľanský Marko, SPŠE-PO, Slovakia
 
 ## Description
 
